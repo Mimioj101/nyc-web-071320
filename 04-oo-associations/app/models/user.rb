@@ -1,4 +1,4 @@
-require 'pry'
+
 class User
     attr_reader :views
     attr_writer :ssn
@@ -28,6 +28,9 @@ class User
 
     ## X oes an animal always need an owner? 
     ## finding all the dogs that an owner has ===> class method
+    def self.dogs_owned
+        owner.species_owned(@type == "dog")
+    end
 
     def all_dogs
         pets.select { |animal|
@@ -49,7 +52,13 @@ class User
 
 
     ## a method thats us search for a specific species 
-
+    def species_search(type)
+        Animal.all.map do |element|
+           if element.type == type
+                element.type
+           end
+        end
+    end
 
 
 
